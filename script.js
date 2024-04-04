@@ -1,55 +1,58 @@
-// Create an Array to store names
-const namesArray = [];
+const namesArray = [] // array to store names
 
-function addName() {
-  const nameInput = document.getElementById("nameInput"); //starting name input
-  const name = nameInput.value.trim(); //get the TRIMMED value of the input box
-  namesArray.push(name); //add the name to the end of the array
-  displayNames(); // Call the displayNames function to update the list
+function addName () {
+  const nameInput = document.getElementById('nameInput') // Get the input element
+  const name = nameInput.value.trim() 
 
-  nameInput.value = ""; // Clear the input after adding the name
+  if (name !== '') {
+    // make sure the name is not empty
+    namesArray.push(name) // Add the name 
+    displayNames() 
+
+    nameInput.value = '' // Clears the input box after you add the name
+
+} else {
+    alert('Not a Valid Name') // Show an alert if the name is empty
+  }
 }
-
-function displayNames() {
-  const nameList = document.getElementById("nameList"); // Get the list element
-  nameList.innerHTML = ""; // Clear the previous list
+  
+// Function to display names in the list
+function displayNames () {
+    const nameList = document.getElementById('nameList') 
+  nameList.innerHTML = '' // Clear the last list
 
   for (let i = 0; i < namesArray.length; i++) {
     // Loop through the names array
-    const name = namesArray[i]; // Get the current name
-
-    const li = document.createElement("li"); // Create a new list item element
-    li.className = "list-group-item"; // Set the class for the list item
-
-    const span = document.createElement("span"); // Create a new span element
-    span.textContent = name; // Set the text content of the span to the name
-
-    li.appendChild(span); // Append the span to the list item
-    nameList.appendChild(li); // Append the list item to the list
+    const name = namesArray[i] 
+    const li = document.createElement('li') 
+    li.className = 'list-group-item' 
+    const span = document.createElement('span') // Create a new span element
+    span.textContent = name
+    
+    li.appendChild(span) // Append the span to the list item
+    nameList.appendChild(li)
   }
-}
-
-document.getElementById("addNameBtn").addEventListener("click", addName);
-
-document
-  .getElementById("pickRandomBtn")
-  .addEventListener("click", pickRandomName);
-
-function pickRandomName() {
-  const randomNameDiv = document.getElementById('randomName')
-  randomNameDiv.textContent = ''
+  }
   
-  const randomNumber = Math.floor(Math.random() * namesArray.length) // generates random numer for the to be used in the index 
-  const randomName= namesArray[randomNumber]
-   randomNameDiv.textContent = randomName 
+  function pickRandomName() {
+    const randomNameDiv = document.getElementById('selectedNameDisplay')
+    randomNameDiv.textContent = ''
 
-   namesArray.splice(randomNumber, 1)
+    //Generate and select a random name from names array
+    const randomNumber = Math.floor(Math.random() * namesArray.length)
+    const randomName = namesArray[randomNumber] 
 
-  displayNames();
+    randomNameDiv.textContent = randomName
+
+    namesArray.splice(randomNumber, 1)
+
+    displayNames();
+  }
 
 
+// Event listener for the button 
+document.getElementById('addNameBtn').addEventListener('click', addName)
 
-
-
-} 
-
+// click and select random name
+document.getElementById('pickRandomBtn').addEventListener('click', pickRandomName)
+  

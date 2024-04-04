@@ -1,5 +1,26 @@
-.customfont {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 35px;
+body {
+    background-color: grey;
 }
 
+.customfont {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 100px;
+}
+
+.pfont {
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 25px;
+}
+
+.btn {
+    background-color: black;
+    color: white; 
+}
+
+.custompadding { 
+    left: 10px;
+}
+
+.h2font {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
